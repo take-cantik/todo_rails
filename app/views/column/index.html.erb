@@ -6,11 +6,14 @@
   </nav>
 
   <div class="columns">
-    <% @columns.each do |column| %>
+    <% @columns.each_with_index do |column, i| %>
       <div class="column">
         <h2>Column: <%= column.name %> (order: <%= column.order %>)</h2>
         <%= link_to "Edit Column", edit_column_path(column) %>
         <%= link_to "Delete Column", column_path(column), method: :delete %>
+        <% if @count - 1 != i %>
+          <p>右に移動すっぺ</p>
+        <% end %>
         <h3>Cards:</h3>
         <% column.cards.each do |card| %>
           <div>

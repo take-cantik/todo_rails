@@ -1,6 +1,7 @@
 class ColumnController < ApplicationController
   def index
 		@columns = Column.order(:order)
+		@count = Column.count
 	end
 
 	def new
