@@ -17,8 +17,6 @@
             <%= link_to card_path(card) do %>
               <h4><%= card.name %></h4>
             <% end %>
-            <%= link_to "Edit Card", edit_card_path(card) %>
-            <%= link_to "Delete Card", card_path(card), method: :delete %>
           </div>
         <% end %>
       </div>
