@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/columns/:id/edit', to: 'column#edit'
   patch '/columns/:id', to: 'column#update'
 
+  get '/cards', to: 'card#index'
   get '/cards/new', to: 'card#new'
   post '/cards', to: 'card#create'
   delete '/cards/:id', to: 'card#destroy'
