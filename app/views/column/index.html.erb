@@ -8,7 +8,7 @@
   <div class="columns">
     <% @columns.each do |column| %>
       <div class="column">
-        <h2>Column: <%= column.name %> (<%= column.id %>)</h2>
+        <h2>Column: <%= column.name %> (order: <%= column.order %>)</h2>
         <%= link_to "Edit Column", edit_column_path(column) %>
         <%= link_to "Delete Column", column_path(column), method: :delete %>
         <h3>Cards:</h3>

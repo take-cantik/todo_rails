@@ -1,6 +1,6 @@
 class ColumnController < ApplicationController
   def index
-		@columns = Column.all
+		@columns = Column.order(:order)
 	end
 
 	def new
