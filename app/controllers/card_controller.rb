@@ -14,7 +14,7 @@ class CardController < ApplicationController
   def create
 		@card = Card.new(card_params)
 		if @card.save
-			redirect_to root_path
+			redirect_to columns_path
 		else
 			render 'new'
 		end
