@@ -1,6 +1,7 @@
 class ColumnController < ApplicationController
   def index
-		@columns = Column.all
+		@columns = Column.order(:order)
+		@count = Column.count
 	end
 
 	def new
@@ -10,7 +11,7 @@ class ColumnController < ApplicationController
 	def create
 		@column = Column.new(column_params)
 		if @column.save
-			redirect_to root_path
+			redirect_to columns_path
 		else
 			render 'new'
 		end

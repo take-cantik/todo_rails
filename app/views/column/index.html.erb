@@ -2,23 +2,31 @@
   <nav>
     <%= link_to "Add Column", new_column_path %>
     <%= link_to "Add Card", new_card_path %>
+    <%= link_to "All Cards", cards_path %>
   </nav>
 
-  <div>
-    <% @columns.each do |column| %>
-      <h2>Column: <%= column.name %> (<%= column.id %>)</h2>
-      <%= link_to "Edit Column", edit_column_path(column) %>
-      <%= link_to "Delete Column", column_path(column), method: :delete %>
-      <h3>Cards:</h3>
-      <% column.cards.each do |card| %>
-        <div>
-          <%= link_to card_path(card) do %>
-            <h4><%= card.name %></h4>
-          <% end %>
-          <%= link_to "Edit Card", edit_card_path(card) %>
-          <%= link_to "Delete Card", card_path(card), method: :delete %>
-        </div>
-      <% end %>
+  <div class="columns">
+    <% @columns.each_with_index do |column, i| %>
+      <div class="column">
+        <h2>Column: <%= column.name %> (order: <%= column.order %>)</h2>
+        <p>
+          次のやつ指定できんの？
+          <%= @columns[i + 1] %>
+        </p>
+        <%= link_to "Edit Column", edit_column_path(column) %>
+        <%= link_to "Delete Column", column_path(column), method: :delete %>
+        <% if @count - 1 != i %>
+          <p>右に移動すっぺ</p>
+        <% end %>
+        <h3>Cards:</h3>
+        <% column.cards.each do |card| %>
+          <div>
+            <%= link_to card_path(card) do %>
+              <h4><%= card.name %></h4>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
