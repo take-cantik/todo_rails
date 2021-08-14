@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/columns/:id', to: 'column#destroy'
   get '/columns/:id/edit', to: 'column#edit'
   patch '/columns/:id', to: 'column#update'
+  patch '/columns/:count/swap', to: 'column#swap', as: :swap_column
 
   get '/cards', to: 'card#index'
   get '/cards/new', to: 'card#new'
