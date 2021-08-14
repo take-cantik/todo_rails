@@ -54,10 +54,11 @@ class ColumnController < ApplicationController
 			end
 		end
 
-		@left_column.order, @right_column.order = @right_column.order, @left_column.order
+		left_order = @right_column.order
+		right_order = @left_column.order
 
-		@left_column.update(column_params)
-		@right_column.update(column_params)
+		@left_column.update_attributes(order: left_order)
+		@right_column.update_attributes(order: right_order)
 
 		redirect_to columns_path
 	end
