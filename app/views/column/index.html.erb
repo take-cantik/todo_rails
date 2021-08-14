@@ -6,17 +6,17 @@
   </nav>
 
   <div class="columns">
-    <% @columns.each_with_index do |column, i| %>
+    <% @columns.each_with_index do |column, index| %>
       <div class="column">
         <h2>Column: <%= column.name %> (order: <%= column.order %>)</h2>
         <p>
           次のやつ指定できんの？
-          <%= @columns[i + 1] %>
+          <%= @columns[index + 1] %>
         </p>
         <%= link_to "Edit Column", edit_column_path(column) %>
         <%= link_to "Delete Column", column_path(column), method: :delete %>
-        <% if @count - 1 != i %>
-          <%= link_to swap_column_path(count: @count), method: :patch do %>
+        <% if @count - 1 != index %>
+          <%= link_to swap_column_path(count: index), method: :patch do %>
             <p>右に移動すっぺ</p>
           <% end %>
         <% end %>
