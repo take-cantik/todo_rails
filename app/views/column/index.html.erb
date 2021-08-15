@@ -23,6 +23,12 @@
             <%= link_to card_path(card) do %>
               <h4><%= card.name %></h4>
               <p><%= card.deadline %></p>
+              <% if index != 0 %>
+                <p>左に移動</p>
+              <% end %>
+              <% if @count - 1 != index %>
+                <p>右に移動</p>
+              <% end %>
             <% end %>
           </div>
         <% end %>
