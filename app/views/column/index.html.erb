@@ -11,10 +11,12 @@
         <h2><%= column.name %>(<%= column.id %>)</h2>
         <%= link_to "Edit Column", edit_column_path(column) %>
         <%= link_to "Delete Column", column_path(column), method: :delete %>
+        <br>
+        <% if index != 0 %>
+          <%= link_to "左に移動", l_swap_column_path(count: index), method: :patch %>
+        <% end %>
         <% if @count - 1 != index %>
-          <%= link_to swap_column_path(count: index), method: :patch do %>
-            <p>右に移動すっぺ</p>
-          <% end %>
+          <%= link_to "右に移動", r_swap_column_path(count: index), method: :patch %>
         <% end %>
         <% column.cards.each do |card| %>
           <div class="card">
