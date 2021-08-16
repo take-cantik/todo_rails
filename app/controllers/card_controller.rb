@@ -9,6 +9,7 @@ class CardController < ApplicationController
 
   def new
     @card = Card.new
+    @column_id = params[:id]
   end
 
   def create
