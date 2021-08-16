@@ -1,7 +1,6 @@
 <div>
   <nav>
     <%= link_to "Add Column", new_column_path %>
-    <%= link_to "Add Card", new_card_path %>
     <%= link_to "All Cards", cards_path %>
   </nav>
 
@@ -9,6 +8,7 @@
     <% @columns.each_with_index do |column, index| %>
       <div class="column">
         <h2><%= column.name %>(<%= column.id %>)</h2>
+        <%= link_to "Add Card", new_card_path(id: column.id) %>
         <%= link_to "Edit Column", edit_column_path(column) %>
         <%= link_to "Delete Column", column_path(column), method: :delete %>
         <br>

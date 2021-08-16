@@ -9,8 +9,7 @@
 		<%= f.label :discription %>
 		<%= f.text_area :discription %>
 
-		<%= f.label :clumnId %>
-		<%= f.text_field :column_id %>
+		<%= f.hidden_field :column_id, value: @column_id %>
 
 		<%= f.label :deadline %>
 		<%= f.date_select :deadline %>
