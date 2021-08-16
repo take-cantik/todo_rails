@@ -35,9 +35,11 @@ class CardController < ApplicationController
   end
 
   def move_right
+    redirect_to columns_path
   end
 
-  def move_end
+  def move_left
+    redirect_to columns_path
   end
 
   private
