@@ -24,10 +24,10 @@
               <h4><%= card.name %></h4>
               <p><%= card.deadline %></p>
               <% if index != 0 %>
-                <p>左に移動</p>
+                <%= link_to "左に移動", l_move_card_path(count: index, id: card.id) %>
               <% end %>
               <% if @count - 1 != index %>
-                <p>右に移動</p>
+                <%= link_to "右に移動", r_move_card_path(count: index, id: card.id) %>
               <% end %>
             <% end %>
           </div>
