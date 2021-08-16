@@ -39,25 +39,25 @@ class ColumnController < ApplicationController
 
 		columns.each_with_index do |column, index|
 			if count == index then
-				original_column = column
+				@original_column = column
 			end
 
 			if right_left == 0 then
 				if count + 1 == index then
-					change_column = column
+					@change_column = column
 				end
-			else
+			elsif right_left == 1 then
 				if count - 1 == index then
-					change_column = column
+					@change_column = column
 				end
 			end
 		end
 
-		original_order = change_column.order
-		change_order = original_column.order
+		original_order = @change_column.order
+		change_order = @original_column.order
 
-		original_column.update_attributes(order: original_order)
-		change_column.update_attributes(order: change_order)
+		@original_column.update_attributes(order: original_order)
+		@change_column.update_attributes(order: change_order)
 
 		redirect_to columns_path
 	end
