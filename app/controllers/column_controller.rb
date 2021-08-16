@@ -31,46 +31,33 @@ class ColumnController < ApplicationController
 		redirect_to columns_path
 	end
 
-	def swap_right
+	def swap
 		columns = Column.order(:order)
-		count = params[:count]
-		count = count.to_i
+		count = params[:count].to_i
+		# right -> 0, left -> 1
+		right_left = params[:right_left].to_i
 
 		columns.each_with_index do |column, index|
 			if count == index then
-				@left_column = column
-			elsif count + 1 == index then
-				@right_column = column
+				@original_column = column
+			end
+
+			if right_left == 0 then
+				if count + 1 == index then
+					@change_column = column
+				end
+			elsif right_left == 1 then
+				if count - 1 == index then
+					@change_column = column
+				end
 			end
 		end
 
-		left_order = @right_column.order
-		right_order = @left_column.order
+		original_order = @change_column.order
+		change_order = @original_column.order
 
-		@left_column.update_attributes(order: left_order)
-		@right_column.update_attributes(order: right_order)
-
-		redirect_to columns_path
-	end
-
-	def swap_left
-		columns = Column.order(:order)
-		count = params[:count]
-		count = count.to_i
-
-		columns.each_with_index do |column, index|
-			if count == index then
-				@right_column = column
-			elsif count - 1 == index then
-				@left_column = column
-			end
-		end
-
-		left_order = @right_column.order
-		right_order = @left_column.order
-
-		@left_column.update_attributes(order: left_order)
-		@right_column.update_attributes(order: right_order)
+		@original_column.update_attributes(order: original_order)
+		@change_column.update_attributes(order: change_order)
 
 		redirect_to columns_path
 	end

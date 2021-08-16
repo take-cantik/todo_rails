@@ -34,34 +34,22 @@ class CardController < ApplicationController
     redirect_to columns_path
   end
 
-  def move_right
+  def move
     @columns = Column.order(:order)
     @card = Card.find(params[:id])
     count = params[:count].to_i
+    right_left = params[:right_left].to_i
     column_id = nil
 
     @columns.each_with_index do |column, index|
-      if count + 1 == index then
-        column_id = column.id
-      end
-    end
-
-    if column_id != nil then
-      @card.update_attributes(column_id: column_id)
-    end
-
-    redirect_to columns_path
-  end
-
-  def move_left
-    @columns = Column.order(:order)
-    @card = Card.find(params[:id])
-    count = params[:count].to_i
-    column_id = nil
-
-    @columns.each_with_index do |column, index|
-      if count - 1 == index then
-        column_id = column.id
+      if right_left == 0 then
+        if count + 1 == index then
+          column_id = column.id
+        end
+      elsif right_left == 1 then
+        if count - 1 == index then
+          column_id = column.id
+        end
       end
     end
 

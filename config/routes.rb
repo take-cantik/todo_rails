@@ -7,8 +7,7 @@ Rails.application.routes.draw do
   delete '/columns/:id', to: 'column#destroy'
   get '/columns/:id/edit', to: 'column#edit'
   patch '/columns/:id', to: 'column#update'
-  patch '/columns/:count/swap_right', to: 'column#swap_right', as: :r_swap_column
-  patch '/columns/:count/swap_left', to: 'column#swap_left', as: :l_swap_column
+  patch '/columns/:count/swap', to: 'column#swap', as: :swap_column
 
   get '/cards', to: 'card#index'
   get '/cards/new', to: 'card#new'
@@ -17,8 +16,7 @@ Rails.application.routes.draw do
   get '/cards/:id/edit', to: 'card#edit'
   patch '/cards/:id', to: 'card#update'
   get '/cards/:id', to: 'card#show'
-  patch '/cards/:id/move_right', to: 'card#move_right', as: :r_move_card
-  patch '/cards/:id/move_left', to: 'card#move_left', as: :l_move_card
+  patch '/cards/:id/move', to: 'card#move', as: :move_card
 
   resources :columns
   resources :cards
