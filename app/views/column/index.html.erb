@@ -24,10 +24,10 @@
               <h4><%= card.name %></h4>
               <p><%= card.deadline %></p>
               <% if index != 0 %>
-                <%= link_to "左に移動", l_move_card_path(count: index, id: card.id), method: :patch %>
+                <%= link_to "左に移動", move_card_path(count: index, id: card.id, right_left: 1), method: :patch %>
               <% end %>
               <% if @count - 1 != index %>
-                <%= link_to "右に移動", r_move_card_path(count: index, id: card.id), method: :patch %>
+                <%= link_to "右に移動", move_card_path(count: index, id: card.id, right_left: 0), method: :patch %>
               <% end %>
             <% end %>
           </div>

@@ -60,9 +60,6 @@ class CardController < ApplicationController
     redirect_to columns_path
   end
 
-    redirect_to columns_path
-  end
-
   private
     def card_params
       params.require(:card).permit(
