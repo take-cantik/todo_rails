@@ -13,10 +13,10 @@
         <%= link_to "Delete Column", column_path(column), method: :delete %>
         <br>
         <% if index != 0 %>
-          <%= link_to "左に移動", l_swap_column_path(count: index), method: :patch %>
+          <%= link_to "左に移動", swap_column_path(count: index, right_left: 1), method: :patch %>
         <% end %>
         <% if @count - 1 != index %>
-          <%= link_to "右に移動", r_swap_column_path(count: index), method: :patch %>
+          <%= link_to "右に移動", swap_column_path(count: index, right_left: 0), method: :patch %>
         <% end %>
         <% column.cards.each do |card| %>
           <div class="card">
