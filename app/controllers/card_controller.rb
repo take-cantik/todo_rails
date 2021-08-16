@@ -54,6 +54,21 @@ class CardController < ApplicationController
   end
 
   def move_left
+    @columns = Column.order(:order)
+    @card = Card.find(params[:id])
+    count = params[:count].to_i
+    column_id = nil
+
+    @columns.each_with_index do |column, index|
+      if count - 1 == index then
+        column_id = column.id
+      end
+    end
+
+    if column_id != nil then
+      @card.update_attributes(column_id: column_id)
+    end
+
     redirect_to columns_path
   end
 
