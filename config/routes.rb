@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   delete '/cards/:id', to: 'card#destroy'
   get '/cards/:id/edit', to: 'card#edit'
   patch '/cards/:id', to: 'card#update'
-
   get '/cards/:id', to: 'card#show'
+  patch '/cards/:id/move_right', to: 'card#move_right', as: :r_move_card
+  patch '/cards/:id/move_left', to: 'card#move_left', as: :l_move_card
 
   resources :columns
   resources :cards

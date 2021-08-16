@@ -34,6 +34,12 @@ class CardController < ApplicationController
     redirect_to columns_path
   end
 
+  def move_right
+  end
+
+  def move_end
+  end
+
   private
     def card_params
       params.require(:card).permit(
