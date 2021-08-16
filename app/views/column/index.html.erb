@@ -22,6 +22,13 @@
           <div class="card">
             <%= link_to card_path(card) do %>
               <h4><%= card.name %></h4>
+              <p><%= card.deadline %></p>
+              <% if index != 0 %>
+                <%= link_to "左に移動", l_move_card_path(count: index, id: card.id), method: :patch %>
+              <% end %>
+              <% if @count - 1 != index %>
+                <%= link_to "右に移動", r_move_card_path(count: index, id: card.id), method: :patch %>
+              <% end %>
             <% end %>
           </div>
         <% end %>
