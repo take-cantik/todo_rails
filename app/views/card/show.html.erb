@@ -5,7 +5,7 @@
   <h2>Deadline</h2>
   <p><%= @card.deadline %></p>
   <% @card.comments.each do |comment| %>
-    <p><% comment.content %></p>
+    <p><%= comment.content %></p>
   <% end %>
 
   <div>
