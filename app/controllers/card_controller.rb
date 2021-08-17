@@ -65,7 +65,6 @@ class CardController < ApplicationController
     def card_params
       params.require(:card).permit(
         :name,
-        :discription,
         :column_id,
         :deadline
       )
