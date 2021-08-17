@@ -5,6 +5,7 @@ class CardController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
+    @comment = Comment.new
   end
 
   def new

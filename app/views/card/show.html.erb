@@ -4,4 +4,19 @@
   <%= link_to "Delete Card", card_path(@card), method: :delete %>
   <h2>Deadline</h2>
   <p><%= @card.deadline %></p>
+  <% @card.comments.each do |comment| %>
+    <p><% comment.content %></p>
+  <% end %>
+
+  <div>
+    <h3>コメントを追加</h3>
+    <%= form_for @comment, url: comment_path do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.hidden_field :card_id, value: @card.id %>
+
+      <%= f.submit "Submit", disable_with: 'Submiting...' %>
+    <% end %>
+  </div>
 </div>
