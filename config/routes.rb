@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/cards/:id', to: 'card#show'
   patch '/cards/:id/move', to: 'card#move', as: :move_card
 
+  post '/comments/:id', to: 'comment#create', as: :comment
+
   resources :columns
   resources :cards
 end

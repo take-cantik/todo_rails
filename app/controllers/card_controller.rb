@@ -5,6 +5,7 @@ class CardController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -65,7 +66,6 @@ class CardController < ApplicationController
     def card_params
       params.require(:card).permit(
         :name,
-        :discription,
         :column_id,
         :deadline
       )
