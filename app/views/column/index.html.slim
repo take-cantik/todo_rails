@@ -7,9 +7,6 @@ div
       .column
         h2
           = column.name
-          | (
-          = column.id
-          | )
         = link_to "Add Card", new_card_path(id: column.id)
         = link_to "Edit Column", edit_column_path(column)
         = link_to "Delete Column", column_path(column), method: :delete
