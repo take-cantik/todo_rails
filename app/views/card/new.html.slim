@@ -7,5 +7,5 @@ div
     = f.text_field :name
     = f.hidden_field :column_id, value: @column_id
     = f.label :deadline
-    = f.date_select :deadline
+    = f.datetime_select :deadline
     = f.submit "Submit", disable_with: 'Submiting...'
