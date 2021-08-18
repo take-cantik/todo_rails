@@ -1,0 +1,11 @@
+- provide(:title, 'Create card')
+h1
+  | Create card
+div
+  = form_for(@card) do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.hidden_field :column_id, value: @column_id
+    = f.label :deadline
+    = f.date_select :deadline
+    = f.submit "Submit", disable_with: 'Submiting...'
