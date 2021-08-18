@@ -1,0 +1,8 @@
+- provide(:title, 'Edit column')
+h1
+  | Edit column
+div
+  = form_for(@column) do |f|
+    = f.label :name
+    = f.text_field :name
+    = f.submit "Submit", disable_with: 'Submiting...'
