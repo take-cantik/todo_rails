@@ -32,32 +32,17 @@ class ColumnController < ApplicationController
 	end
 
 	def swap
-		columns = Column.order(:order)
 		count = params[:count].to_i
-		# right -> 0, left -> 1
+		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
-		columns.each_with_index do |column, index|
-			if count == index then
-				@original_column = column
-			end
+		@original, @change = Column.get_swap_columns(count, right_left)
 
-			if right_left == 0 then
-				if count + 1 == index then
-					@change_column = column
-				end
-			elsif right_left == 1 then
-				if count - 1 == index then
-					@change_column = column
-				end
-			end
-		end
+		original_order = @original.order
+		change_order = @change.order
 
-		original_order = @change_column.order
-		change_order = @original_column.order
-
-		@original_column.update_attributes(order: original_order)
-		@change_column.update_attributes(order: change_order)
+		@original.update_attributes(order: change_order)
+		@change.update_attributes(order: original_order)
 
 		redirect_to columns_path
 	end
