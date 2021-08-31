@@ -64,5 +64,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "auto_increment"
 
 gem "slim-rails"
-
 gem 'html2slim'
+
+gem 'devise', github: 'heartcombo/devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+gem 'dotenv-rails'
+
+gem 'omniauth-rails_csrf_protection'
