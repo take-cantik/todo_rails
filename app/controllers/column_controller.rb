@@ -33,7 +33,7 @@ class ColumnController < ApplicationController
 
 	def swap
 		count = params[:count].to_i
-		# right -> 0, left -> 1
+		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
 		@original, @change = Column.get_swap_columns(count, right_left)

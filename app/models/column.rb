@@ -10,14 +10,8 @@ class Column < ApplicationRecord
         @original_column = column
       end
 
-      if right_left == 0 then
-        if count + 1 == index then
-          @change_column = column
-        end
-      elsif right_left == 1 then
-        if count - 1 == index then
-          @change_column = column
-        end
+      if count + right_left == index then
+        @change_column = column
       end
     end
 
@@ -28,14 +22,8 @@ class Column < ApplicationRecord
     @columns = self.order(:order)
 
     @columns.each_with_index do |column, index|
-      if right_left == 0 then
-        if count + 1 == index then
-          return column.id
-        end
-      elsif right_left == 1 then
-        if count - 1 == index then
-          return column.id
-        end
+      if count + right_left == index then
+        return column.id
       end
     end
   end
