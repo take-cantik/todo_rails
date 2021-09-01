@@ -12,4 +12,8 @@ class Card < ApplicationRecord
     end
   end
 
+  def self.new_comment
+    return Comment.new
+  end
+
 end
