@@ -39,7 +39,7 @@ class CardController < ApplicationController
   def move
     count = params[:count].to_i
     right_left = params[:right_left].to_i
-    column_id = Column.get_id_to_move_card(count, right_left)
+    column_id = Card.get_id_to_move_card(count, right_left)
     @card = Card.find(params[:id])
 
     @card.update_attributes(column_id: column_id)

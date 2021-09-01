@@ -19,14 +19,14 @@ class Column < ApplicationRecord
     return @original_column, @change_column
   end
 
-  def self.get_id_to_move_card(count, right_left)
-    @columns = self.order(:order)
+  # def self.get_id_to_move_card(count, right_left)
+  #   @columns = self.order(:order)
 
-    @columns.each_with_index do |column, index|
-      if count + right_left == index then
-        return column.id
-      end
-    end
-  end
+  #   @columns.each_with_index do |column, index|
+  #     if count + right_left == index then
+  #       return column.id
+  #     end
+  #   end
+  # end
 
 end
