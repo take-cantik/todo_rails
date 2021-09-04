@@ -31,6 +31,8 @@ class CardController < ApplicationController
 
     if card_user_id == user_id then
       Card.find(params[:id]).delete
+    else
+      render status: 401
     end
 
 		redirect_to user_path(id: user_id)

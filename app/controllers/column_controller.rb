@@ -25,6 +25,8 @@ class ColumnController < ApplicationController
 
 		if user_id == column.user_id then
 			column.delete
+		else
+			render status: 401
 		end
 
 		redirect_to user_path(id: user_id)
