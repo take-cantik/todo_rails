@@ -34,6 +34,10 @@ Rails.application.routes.draw do
 
   post '/comments/:id', to: 'comment#create', as: :comment
 
+  get '/users', to: 'user#index'
+  get '/users/:id', to: 'user#show'
+
   resources :columns
   resources :cards
+  resources :users, :only => [:index, :show]
 end
