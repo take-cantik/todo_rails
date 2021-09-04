@@ -18,6 +18,7 @@ class CardController < ApplicationController
 		if @card.save
       column_id = params[:card][:column_id]
       user_id = Card.get_user_id(column_id)
+
 			redirect_to user_path(id: user_id)
 		else
 			render 'new'
@@ -35,7 +36,11 @@ class CardController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card.update(card_params)
-    redirect_to columns_path
+
+    column_id = params[:card][:column_id]
+    user_id = Card.get_user_id(column_id)
+
+    redirect_to user_path(id: user_id)
   end
 
   def move

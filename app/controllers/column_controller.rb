@@ -30,7 +30,7 @@ class ColumnController < ApplicationController
 	def update
 		@column = Column.find(params[:id])
 		@column.update(column_params)
-		redirect_to columns_path
+		redirect_to user_path(@column.user_id)
 	end
 
 	def swap
