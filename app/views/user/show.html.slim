@@ -7,7 +7,7 @@ div
         = link_to "Add Column", new_column_path(id: @user.id)
         = link_to "All Cards", cards_path
       .columns
-        - @user.columns.each_with_index do |column, index|
+        - @user.columns.order(:order).each_with_index do |column, index|
           .column
             h2
               = column.name
