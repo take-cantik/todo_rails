@@ -26,11 +26,12 @@ class CardController < ApplicationController
 	end
 
   def destroy
-    card_user_id = Card.get_user_id(params[:id])
-    user_id = params[:user_id]
+    card = Card.find(params[:id])
+    card_user_id = Card.get_user_id(card.column_id)
+    user_id = params[:user_id].to_i
 
     if card_user_id == user_id then
-      Card.find(params[:id]).delete
+      card.delete
     else
       render status: 401
     end
