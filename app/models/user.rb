@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :trackable, :omniauthable, omniauth_providers: %i(google)
 
-  has_many :columns
+  has_many :columns, -> { order('order') }
 
   protected
   def self.find_for_google(auth)
