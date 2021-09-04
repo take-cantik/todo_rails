@@ -2,8 +2,8 @@ class Card < ApplicationRecord
   belongs_to :column
   has_many :comments
 
-  def self.get_id_to_move_card(count, right_left)
-    @columns = Column.order(:order)
+  def self.get_column_id_to_move_card(user_id, count, right_left)
+    @columns = User.find(user_id).columns.order(:order)
 
     @columns.each_with_index do |column, index|
       if count + right_left == index then
