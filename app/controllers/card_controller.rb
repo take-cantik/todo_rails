@@ -26,8 +26,13 @@ class CardController < ApplicationController
 	end
 
   def destroy
-    Card.find(params[:id]).delete
+    card_user_id = Card.get_user_id(params[:id])
     user_id = params[:user_id]
+
+    if card_user_id == user_id then
+      Card.find(params[:id]).delete
+    end
+
 		redirect_to user_path(id: user_id)
   end
 
