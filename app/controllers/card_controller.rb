@@ -16,7 +16,9 @@ class CardController < ApplicationController
   def create
 		@card = Card.new(card_params)
 		if @card.save
-			redirect_to columns_path
+      column_id = params[:card][:column_id]
+      user_id = Card.get_user_id(column_id)
+			redirect_to user_path(id: user_id)
 		else
 			render 'new'
 		end

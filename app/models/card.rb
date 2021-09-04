@@ -16,4 +16,9 @@ class Card < ApplicationRecord
     return Comment.new
   end
 
+  def self.get_user_id(column_id)
+    @column = Column.find(column_id)
+    return @column.user_id
+  end
+
 end
