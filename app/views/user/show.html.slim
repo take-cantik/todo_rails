@@ -5,7 +5,7 @@ div
     div
       nav
         = link_to "Add Column", new_column_path(id: @user.id)
-        = link_to "All Cards", cards_path
+        = link_to "All Cards", cards_path(id: @user.id)
       .columns
         - @user.columns.order(:order).each_with_index do |column, index|
           .column

@@ -21,4 +21,15 @@ class Card < ApplicationRecord
     return @column.user_id
   end
 
+  def self.all_find_user(user_id)
+    columns = User.find(user_id).columns
+    cards = []
+    columns.each do |column|
+      column.cards.each do |card|
+        cards.append(card)
+      end
+    end
+    return cards
+  end
+
 end

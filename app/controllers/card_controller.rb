@@ -1,6 +1,6 @@
 class CardController < ApplicationController
   def index
-    @cards = Card.all
+    @cards = Card.all_find_user(params[:id])
   end
 
   def show
