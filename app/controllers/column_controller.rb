@@ -20,8 +20,13 @@ class ColumnController < ApplicationController
 	end
 
 	def destroy
-		Column.find(params[:id]).delete
 		user_id = params[:user_id]
+		column = Column.find(params[:id])
+
+		if user_id == column.user_id then
+			column.delete
+		end
+
 		redirect_to user_path(id: user_id)
 	end
 
