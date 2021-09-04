@@ -34,11 +34,12 @@ class ColumnController < ApplicationController
 	end
 
 	def swap
+		user_id = params[:user_id].to_i
 		count = params[:count].to_i
 		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
-		@original, @change = Column.get_swap_columns(count, right_left)
+		@original, @change = Column.get_swap_columns(user_id, count, right_left)
 
 		original_order = @original.order
 		change_order = @change.order
@@ -46,7 +47,7 @@ class ColumnController < ApplicationController
 		@original.update_attributes(order: change_order)
 		@change.update_attributes(order: original_order)
 
-		redirect_to columns_path
+		redirect_to user_path(id: user_id)
 	end
 
 	private

@@ -16,9 +16,9 @@ div
             = link_to "Delete Column", column_path(column), method: :delete
             br
             - if index != 0
-              = link_to "左に移動", swap_column_path(count: index, right_left: -1), method: :patch
+              = link_to "左に移動", swap_column_path(user_id: current_user.id, count: index, right_left: -1), method: :patch
             - if @count - 1 != index
-              = link_to "右に移動", swap_column_path(count: index, right_left: 1), method: :patch
+              = link_to "右に移動", swap_column_path(user_id: current_user.id, count: index, right_left: 1), method: :patch
             - column.cards.each do |card|
               .card
                 = link_to card_path(card) do
