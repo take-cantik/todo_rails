@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  devise_scope :user do
+    get "user/:id", :to => "users/registrations#detail"
+    get "signup", :to => "users/registrations#new"
+    get "login", :to => "users/sessions#new"
+    get "logout", :to => "users/sessions#destroy"
+  end
 
   root 'home#index'
 
@@ -25,6 +34,10 @@ Rails.application.routes.draw do
 
   post '/comments/:id', to: 'comment#create', as: :comment
 
+  get '/users', to: 'user#index'
+  get '/users/:id', to: 'user#show'
+
   resources :columns
   resources :cards
+  resources :users, :only => [:index, :show]
 end

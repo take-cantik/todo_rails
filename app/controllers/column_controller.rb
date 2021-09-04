@@ -6,19 +6,30 @@ class ColumnController < ApplicationController
 
 	def new
 		@column = Column.new
+		@user_id = params[:id]
 	end
 
 	def create
 		@column = Column.new(column_params)
 		if @column.save
-			redirect_to columns_path
+			user_id = params[:column][:user_id]
+			redirect_to user_path(id: user_id)
 		else
 			render 'new'
 		end
 	end
 
 	def destroy
-		Column.find(params[:id]).delete
+		user_id = params[:user_id]
+		column = Column.find(params[:id])
+
+		if user_id == column.user_id then
+			column.delete
+		else
+			render status: 401
+		end
+
+		redirect_to user_path(id: user_id)
 	end
 
 	def edit
@@ -28,15 +39,16 @@ class ColumnController < ApplicationController
 	def update
 		@column = Column.find(params[:id])
 		@column.update(column_params)
-		redirect_to columns_path
+		redirect_to user_path(@column.user_id)
 	end
 
 	def swap
+		user_id = params[:user_id].to_i
 		count = params[:count].to_i
 		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
-		@original, @change = Column.get_swap_columns(count, right_left)
+		@original, @change = Column.get_swap_columns(user_id, count, right_left)
 
 		original_order = @original.order
 		change_order = @change.order
@@ -44,14 +56,15 @@ class ColumnController < ApplicationController
 		@original.update_attributes(order: change_order)
 		@change.update_attributes(order: original_order)
 
-		redirect_to columns_path
+		redirect_to user_path(id: user_id)
 	end
 
 	private
 		def column_params
 			params.require(:column).permit(
 				:name,
-				:order
+				:order,
+				:user_id
 			)
 		end
 end

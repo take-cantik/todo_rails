@@ -3,8 +3,8 @@ class Column < ApplicationRecord
   belongs_to :user
   auto_increment :order
 
-  def self.get_swap_columns(count, right_left)
-    @columns = self.order(:order)
+  def self.get_swap_columns(user_id, count, right_left)
+    @columns = User.find(user_id).columns.order(:order)
 
     @columns.each_with_index do |column, index|
       if count == index then

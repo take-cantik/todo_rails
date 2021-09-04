@@ -1,6 +1,6 @@
 class CardController < ApplicationController
   def index
-    @cards = Card.all
+    @cards = Card.all_find_user(params[:id])
   end
 
   def show
@@ -16,14 +16,26 @@ class CardController < ApplicationController
   def create
 		@card = Card.new(card_params)
 		if @card.save
-			redirect_to columns_path
+      column_id = params[:card][:column_id]
+      user_id = Card.get_user_id(column_id)
+
+			redirect_to user_path(id: user_id)
 		else
 			render 'new'
 		end
 	end
 
   def destroy
-    Card.find(params[:id]).delete
+    card_user_id = Card.get_user_id(params[:id])
+    user_id = params[:user_id]
+
+    if card_user_id == user_id then
+      Card.find(params[:id]).delete
+    else
+      render status: 401
+    end
+
+		redirect_to user_path(id: user_id)
   end
 
   def edit
@@ -33,18 +45,23 @@ class CardController < ApplicationController
   def update
     @card = Card.find(params[:id])
     @card.update(card_params)
-    redirect_to columns_path
+
+    column_id = params[:card][:column_id]
+    user_id = Card.get_user_id(column_id)
+
+    redirect_to user_path(id: user_id)
   end
 
   def move
+    user_id = params[:user_id].to_i
     count = params[:count].to_i
     right_left = params[:right_left].to_i
-    column_id = Card.get_id_to_move_card(count, right_left)
+    column_id = Card.get_column_id_to_move_card(user_id, count, right_left)
     @card = Card.find(params[:id])
 
     @card.update_attributes(column_id: column_id)
 
-    redirect_to columns_path
+    redirect_to user_path(id: user_id)
   end
 
   private

@@ -1,7 +1,13 @@
 header
   div
     h1
-      = link_to "To Do List", columns_path
+      - if user_signed_in?
+        = link_to "To Do List", user_path(id: current_user.id)
+      - else
+        = link_to "To Do List", root_path
     nav
       = link_to "Home Page", root_path
-      = link_to "Google Login", user_google_omniauth_authorize_path, method: :post
+      - if user_signed_in?
+        = link_to "Log out", logout_path
+      - else
+        = link_to "Google Login", user_google_omniauth_authorize_path, method: :post
