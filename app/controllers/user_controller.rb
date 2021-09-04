@@ -5,6 +5,6 @@ class UserController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @count = User.columns.count
+    @count = @user.columns.count
   end
 end
