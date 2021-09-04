@@ -1,8 +1,8 @@
 class CommentController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
-    @comment.save
-    redirect_to card_path(@comment.card_id)
+    comment = Comment.new(comment_params)
+    comment.save
+    redirect_to card_path(comment.card_id)
   end
 
   private

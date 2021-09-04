@@ -14,8 +14,8 @@ class CardController < ApplicationController
   end
 
   def create
-		@card = Card.new(card_params)
-		if @card.save
+		card = Card.new(card_params)
+		if card.save
       column_id = params[:card][:column_id]
       user_id = Card.get_user_id(column_id)
 
@@ -26,11 +26,12 @@ class CardController < ApplicationController
 	end
 
   def destroy
-    card_user_id = Card.get_user_id(params[:id])
-    user_id = params[:user_id]
+    card = Card.find(params[:id])
+    card_user_id = Card.get_user_id(card.column_id)
+    user_id = params[:user_id].to_i
 
     if card_user_id == user_id then
-      Card.find(params[:id]).delete
+      card.delete
     else
       render status: 401
     end
@@ -43,8 +44,8 @@ class CardController < ApplicationController
   end
 
   def update
-    @card = Card.find(params[:id])
-    @card.update(card_params)
+    card = Card.find(params[:id])
+    card.update(card_params)
 
     column_id = params[:card][:column_id]
     user_id = Card.get_user_id(column_id)
@@ -57,9 +58,9 @@ class CardController < ApplicationController
     count = params[:count].to_i
     right_left = params[:right_left].to_i
     column_id = Card.get_column_id_to_move_card(user_id, count, right_left)
-    @card = Card.find(params[:id])
+    card = Card.find(params[:id])
 
-    @card.update_attributes(column_id: column_id)
+    card.update_attributes(column_id: column_id)
 
     redirect_to user_path(id: user_id)
   end

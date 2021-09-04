@@ -4,9 +4,9 @@ class Column < ApplicationRecord
   auto_increment :order
 
   def self.get_swap_columns(user_id, count, right_left)
-    @columns = User.find(user_id).columns.order(:order)
+    columns = User.find(user_id).columns.order(:order)
 
-    @columns.each_with_index do |column, index|
+    columns.each_with_index do |column, index|
       if count == index then
         @original_column = column
       end
