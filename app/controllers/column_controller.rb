@@ -6,12 +6,14 @@ class ColumnController < ApplicationController
 
 	def new
 		@column = Column.new
+		@user_id = params[:id]
 	end
 
 	def create
 		@column = Column.new(column_params)
 		if @column.save
-			redirect_to columns_path
+			user_id = params[:column][:user_id]
+			redirect_to user_path(id: user_id)
 		else
 			render 'new'
 		end
@@ -51,7 +53,8 @@ class ColumnController < ApplicationController
 		def column_params
 			params.require(:column).permit(
 				:name,
-				:order
+				:order,
+				:user_id
 			)
 		end
 end

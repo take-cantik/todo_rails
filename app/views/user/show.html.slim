@@ -2,3 +2,31 @@ div
   - if current_user.id == @user.id
     p
       = @user.name
+    div
+      nav
+        = link_to "Add Column", new_column_path(id: @user.id)
+        = link_to "All Cards", cards_path
+      .columns
+        - @user.columns.each_with_index do |column, index|
+          .column
+            h2
+              = column.name
+            = link_to "Add Card", new_card_path(id: column.id)
+            = link_to "Edit Column", edit_column_path(column)
+            = link_to "Delete Column", column_path(column), method: :delete
+            br
+            - if index != 0
+              = link_to "左に移動", swap_column_path(count: index, right_left: -1), method: :patch
+            - if @count - 1 != index
+              = link_to "右に移動", swap_column_path(count: index, right_left: 1), method: :patch
+            - column.cards.each do |card|
+              .card
+                = link_to card_path(card) do
+                  h4
+                    = card.name
+                  p
+                    = card.deadline
+                  - if index != 0
+                    = link_to "左に移動", move_card_path(count: index, id: card.id, right_left: -1), method: :patch
+                  - if @count - 1 != index
+                    = link_to "右に移動", move_card_path(count: index, id: card.id, right_left: 1), method: :patch
