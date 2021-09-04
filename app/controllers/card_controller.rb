@@ -27,6 +27,8 @@ class CardController < ApplicationController
 
   def destroy
     Card.find(params[:id]).delete
+    user_id = params[:user_id]
+		redirect_to user_path(id: user_id)
   end
 
   def edit

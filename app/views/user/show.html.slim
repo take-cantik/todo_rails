@@ -13,7 +13,7 @@ div
               = column.name
             = link_to "Add Card", new_card_path(id: column.id)
             = link_to "Edit Column", edit_column_path(column)
-            = link_to "Delete Column", column_path(column), method: :delete
+            = link_to "Delete Column", column_path(id: column.id, user_id: @user.id), method: :delete
             br
             - if index != 0
               = link_to "左に移動", swap_column_path(user_id: current_user.id, count: index, right_left: -1), method: :patch

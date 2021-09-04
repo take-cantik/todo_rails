@@ -12,7 +12,7 @@ class ColumnController < ApplicationController
 	def create
 		@column = Column.new(column_params)
 		if @column.save
-			user_id = params[:column][:user_id]
+			user_id = params[:user_id]
 			redirect_to user_path(id: user_id)
 		else
 			render 'new'
@@ -21,6 +21,8 @@ class ColumnController < ApplicationController
 
 	def destroy
 		Column.find(params[:id]).delete
+		user_id = params[:column][:user_id]
+		redirect_to user_path(id: user_id)
 	end
 
 	def edit

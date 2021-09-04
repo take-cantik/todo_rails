@@ -2,7 +2,7 @@ div
   h1
     = @card.name
   = link_to "Edit Card", edit_card_path(@card)
-  = link_to "Delete Card", card_path(@card), method: :delete
+  = link_to "Delete Card", card_path(id: @card, user_id: current_user.id), method: :delete
   h2
     | Deadline
   p
