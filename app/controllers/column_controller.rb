@@ -10,8 +10,8 @@ class ColumnController < ApplicationController
 	end
 
 	def create
-		@column = Column.new(column_params)
-		if @column.save
+		column = Column.new(column_params)
+		if column.save
 			user_id = params[:column][:user_id]
 			redirect_to user_path(id: user_id)
 		else
@@ -37,9 +37,9 @@ class ColumnController < ApplicationController
 	end
 
 	def update
-		@column = Column.find(params[:id])
-		@column.update(column_params)
-		redirect_to user_path(@column.user_id)
+		column = Column.find(params[:id])
+		column.update(column_params)
+		redirect_to user_path(column.user_id)
 	end
 
 	def swap
@@ -48,13 +48,13 @@ class ColumnController < ApplicationController
 		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
-		@original, @change = Column.get_swap_columns(user_id, count, right_left)
+		original, change = Column.get_swap_columns(user_id, count, right_left)
 
-		original_order = @original.order
-		change_order = @change.order
+		original_order = original.order
+		change_order = change.order
 
-		@original.update_attributes(order: change_order)
-		@change.update_attributes(order: original_order)
+		original.update_attributes(order: change_order)
+		change.update_attributes(order: original_order)
 
 		redirect_to user_path(id: user_id)
 	end
