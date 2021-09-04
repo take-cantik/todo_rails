@@ -3,3 +3,9 @@ div
     | This is take_cantik's ToDo List
   h2
     = link_to "Start", columns_path
+
+  - if user_signed_in?
+    p
+      = current_user.name
+      = current_user.uid
+      = current_user.email
