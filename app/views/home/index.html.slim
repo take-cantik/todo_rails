@@ -1,10 +1,13 @@
 div
   h1
-    | This is take_cantik's ToDo List
-  h2
-    - if user_signed_in?
+    | This is Todo List!
+
+  - if user_signed_in?
+    h2
       = link_to "Start", user_path(id: current_user.id)
-    - else
+  - else
+    h2
+      | Login first
       = link_to "Start", user_google_omniauth_authorize_path, method: :post
 
   - if user_signed_in?
