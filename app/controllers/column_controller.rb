@@ -20,7 +20,7 @@ class ColumnController < ApplicationController
 	end
 
 	def destroy
-		user_id = params[:user_id]
+		user_id = params[:user_id].to_i
 		column = Column.find(params[:id])
 
 		if user_id == column.user_id then
@@ -45,7 +45,6 @@ class ColumnController < ApplicationController
 	def swap
 		user_id = params[:user_id].to_i
 		count = params[:count].to_i
-		# right -> 1, left -> -1
 		right_left = params[:right_left].to_i
 
 		original, change = Column.get_swap_columns(user_id, count, right_left)
