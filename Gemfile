@@ -73,3 +73,5 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 
 gem 'omniauth-rails_csrf_protection'
+
+gem "webpacker", "~> 4.x"
