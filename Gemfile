@@ -74,6 +74,8 @@ gem 'dotenv-rails'
 
 gem 'omniauth-rails_csrf_protection'
 
-gem "webpacker", "~> 4.x"
+gem 'webpacker', '~> 5.4.2'
 
 gem 'rack-proxy', '~> 0.7.0'
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
