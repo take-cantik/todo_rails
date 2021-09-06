@@ -76,4 +76,4 @@ gem 'omniauth-rails_csrf_protection'
 
 gem "webpacker", "~> 4.x"
 
-gem 'rack-reverse-proxy'
+gem 'rack-proxy', '~> 0.7.0'
