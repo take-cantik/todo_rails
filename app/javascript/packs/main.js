@@ -7,7 +7,7 @@
 
 import Vue from 'vue'
 import router from './router'
-import App from '../app.vue'
+import App from '../App.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }).$mount()
   document.body.appendChild(app.$el)
 
+  console.warn('mounted!')
   console.log(app)
 })
 
