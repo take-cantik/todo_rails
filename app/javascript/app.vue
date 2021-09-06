@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <h1>feature/header</h1>
+    <div>
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
+  data () {
     return {
       message: "Hello Vue!"
     }
