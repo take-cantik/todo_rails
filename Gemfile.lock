@@ -179,6 +179,9 @@ GEM
       rack
     rack-proxy (0.7.0)
       rack
+    rack-reverse-proxy (0.12.0)
+      rack (>= 1.0.0)
+      rack-proxy (~> 0.6, >= 0.6.1)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.6)
@@ -296,6 +299,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
+  rack-reverse-proxy
   rails (~> 5.2.6)
   sass-rails (~> 5.0)
   selenium-webdriver
