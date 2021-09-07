@@ -40,4 +40,10 @@ Rails.application.routes.draw do
   resources :columns
   resources :cards
   resources :users, :only => [:index, :show]
+
+  namespace :api, {format: 'json'} do
+    resources :columns
+    resources :cards
+    resources :users, :only => [:index, :show]
+  end
 end
