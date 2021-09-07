@@ -37,7 +37,9 @@ Rails.application.routes.draw do
   get '/users', to: 'user#index'
   get '/users/:id', to: 'user#show'
 
-  resources :columns
-  resources :cards
-  resources :users, :only => [:index, :show]
+  namespace :api, {format: 'json'} do
+    resources :columns
+    resources :cards
+    resources :users, :only => [:index, :show]
+  end
 end
