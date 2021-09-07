@@ -1,4 +1,4 @@
-class Api::CardController < ApiController
+class Api::CardsController < ApiController
   def index
     @cards = Card.all_find_user(params[:id])
   end

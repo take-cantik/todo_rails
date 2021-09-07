@@ -1,4 +1,4 @@
-class Api::ColumnController < ApiController
+class Api::ColumnsController < ApiController
   def index
 		@columns = Column.order(:order)
 		@count = Column.count

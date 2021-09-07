@@ -1,4 +1,4 @@
-class Api::CommentController < ApiController
+class Api::CommentsController < ApiController
   def create
     comment = Comment.new(comment_params)
     comment.save
