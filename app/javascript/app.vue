@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>~~~以下Vueです~~~</h1>
     <Header />
     <div>
       <router-view />

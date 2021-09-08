@@ -3,7 +3,26 @@
     <h1>Todo List</h1>
     <nav>
       <p>About(home)</p>
-      <p>Google Auth</p>
+      <a rel="nofollow" data-method="post" href="/users/auth/google">Google Login</a>
     </nav>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data () {
+    return {
+      user: []
+    }
+  },
+  mounted () {
+    axios
+      .get('/users/auth/google/callback')
+      .then(response => (this.user = response.data))
+
+    console.log(this.user);
+  }
+}
+</script>
