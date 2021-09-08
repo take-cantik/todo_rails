@@ -14,11 +14,6 @@ export default {
   components: {
     Header
   },
-  data () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
 }
 </script>
 
