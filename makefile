@@ -1,3 +1,8 @@
+init:
+	@make build
+	@make up
+	@make db-create
+	@make db-migrate
 build:
 	docker-compose build
 up:
