@@ -17,12 +17,5 @@ export default {
       user: []
     }
   },
-  mounted () {
-    axios
-      .get('/users/auth/google/callback')
-      .then(response => (this.user = response.data))
-
-    console.log(this.user);
-  }
 }
 </script>
