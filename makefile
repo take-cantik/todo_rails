@@ -8,4 +8,8 @@ db-migrate:
 	docker-compose run web rails db:migrate
 down:
 	docker-compose down
+todo_web:
+	docker exec -it todo_web bash
+todo_db:
+	docker exec -it todo_db bash
 
