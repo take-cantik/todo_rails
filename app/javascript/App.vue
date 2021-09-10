@@ -12,25 +12,22 @@
 </template>
 
 <script>
-import Header from './packs/components/Header.vue';
-import axios from 'axios';
+import Header from "./packs/components/Header.vue";
+import axios from "axios";
 
 export default {
-
   components: {
     Header
   },
-  data () {
+  data() {
     return {
       current_user: {}
-    }
+    };
   },
-  created () {
-    axios
-      .get('api/auth.json')
-      .then(response => (this.current_user = response.data))
-  },
-}
+  created() {
+    axios.get("api/auth").then(response => (this.current_user = response.data));
+  }
+};
 </script>
 
 <style scoped>
