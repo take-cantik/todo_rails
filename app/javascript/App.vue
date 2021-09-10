@@ -29,7 +29,7 @@ export default {
     axios
       .get('api/auth.json')
       .then(response => (this.current_user = response.data))
-  }
+  },
 }
 </script>
 
