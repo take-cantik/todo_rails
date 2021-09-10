@@ -46,5 +46,8 @@ Rails.application.routes.draw do
     resources :cards
     resources :users, :only => [:index, :show]
     get '/auth', to: 'auth#user'
+    devise_for :user do
+      delete '/sign_out' => 'sessions#destroy'
+    end
   end
 end
