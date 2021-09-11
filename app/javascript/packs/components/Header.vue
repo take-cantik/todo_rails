@@ -6,7 +6,20 @@
       <a rel="nofollow" data-method="post" href="/users/auth/google"
         >Google Login</a
       >
-      <a href="/logout">Log out</a>
+      <a href="#" @click="logout">Log out</a>
     </nav>
   </div>
 </template>
+
+<script>
+import axios from "axios";
+export default {
+  methods: {
+    async logout(e) {
+      e.preventDefault();
+      await axios.get("/logout");
+      location.reload();
+    }
+  }
+};
+</script>
