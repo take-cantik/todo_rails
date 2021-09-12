@@ -45,5 +45,6 @@ Rails.application.routes.draw do
     resources :columns
     resources :cards
     resources :users, :only => [:index, :show]
+    get '/auth', to: 'auth#user'
   end
 end

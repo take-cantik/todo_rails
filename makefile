@@ -1,3 +1,8 @@
+init:
+	@make build
+	@make up
+	@make db-create
+	@make db-migrate
 build:
 	docker-compose build
 up:
@@ -8,4 +13,8 @@ db-migrate:
 	docker-compose run web rails db:migrate
 down:
 	docker-compose down
+todo_web:
+	docker exec -it todo_web bash
+todo_db:
+	docker exec -it todo_db bash
 
