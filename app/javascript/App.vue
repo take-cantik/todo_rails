@@ -6,7 +6,9 @@
       <div v-if="current_user">
         <h1>{{ current_user.name }}</h1>
       </div>
-      <router-view />
+      <router-view
+        :current_user = "current_user"
+      />
     </div>
   </div>
 </template>
