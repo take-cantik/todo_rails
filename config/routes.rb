@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/columns', to: 'column#index'
+  get '/columns/:id', to: 'column#show'
   get '/columns/new', to: 'column#new'
   post '/columns', to: 'column#create'
   delete '/columns/:id', to: 'column#destroy'
