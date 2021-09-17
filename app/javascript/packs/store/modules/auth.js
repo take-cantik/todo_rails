@@ -21,11 +21,10 @@ export default {
   actions: {
     async googleLogin({ commit }) {
       try {
-        let current_user
-        await axios.get("api/auth").then(response => (current_user = response.data));
+        const { data } = await axios.get("api/auth")
 
-        const userId = current_user.id
-        const userName = current_user.name
+        const userId = data.id
+        const userName = data.name
 
         commit('SET_USER', userId, userName)
       }
