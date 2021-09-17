@@ -27,7 +27,7 @@ export default {
     };
   },
   created() {
-    axios.get("api/auth").then(response => (this.current_user = response.data));
+    this.current_user = store.dispatch('auth/googleLogin')
   }
 };
 </script>
