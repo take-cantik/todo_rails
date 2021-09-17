@@ -27,7 +27,7 @@ export default {
     };
   },
   created() {
-    this.current_user = store.dispatch('auth/googleLogin')
+    this.current_user = this.$store.dispatch('auth/googleLogin')
   }
 };
 </script>

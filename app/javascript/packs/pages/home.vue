@@ -22,8 +22,6 @@ export default {
     axios
       .get(`api/columns?id=${this.current_user.id}`)
       .then(response => (this.columns = response.data))
-
-    console.log(this.user.name)
   }
 }
 </script>
