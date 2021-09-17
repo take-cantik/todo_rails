@@ -3,9 +3,7 @@
     <h1>~~~以下Vueです~~~</h1>
     <Header />
     <div>
-      <div v-if="userId">
-        <h1>{{ userName }}</h1>
-      </div>
+      <div>userName : {{ userName }}</div>
       <router-view
         :current_user = "userId"
       />
@@ -28,7 +26,7 @@ export default {
     ...mapGetters({
       userId: 'auth/userId',
       userName: 'auth/userName',
-    })
+    }),
   },
 };
 </script>

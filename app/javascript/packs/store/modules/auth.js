@@ -13,7 +13,7 @@ export default {
     userName: (state) => state.userName,
   },
   mutations: {
-    SET_USER(state, userId, userName) {
+    SET_USER(state, { userId, userName }) {
       state.userId = userId;
       state.userName = userName;
     },
@@ -26,7 +26,7 @@ export default {
         const userId = data.id
         const userName = data.name
 
-        commit('SET_USER', userId, userName)
+        commit('SET_USER', { userId, userName })
       }
       catch (err) {
         console.error(err);
