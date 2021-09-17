@@ -20,7 +20,7 @@ export default {
   },
   created() {
     axios
-      .get(`api/columns?id=${this.current_user.id}`)
+      .get(`api/columns?id=${this.current_user}`)
       .then(response => (this.columns = response.data))
   }
 }

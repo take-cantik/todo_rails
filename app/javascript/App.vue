@@ -3,11 +3,11 @@
     <h1>~~~以下Vueです~~~</h1>
     <Header />
     <div>
-      <div v-if="current_user">
-        <h1>{{ current_user.name }}</h1>
+      <div v-if="userId">
+        <h1>{{ userName }}</h1>
       </div>
       <router-view
-        :current_user = "current_user"
+        :current_user = "userId"
       />
     </div>
   </div>
@@ -15,20 +15,21 @@
 
 <script>
 import Header from "./packs/components/Header.vue";
-import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     Header
   },
-  data() {
-    return {
-      current_user: {}
-    };
-  },
   created() {
-    this.current_user = this.$store.dispatch('auth/googleLogin')
-  }
+    this.$store.dispatch('auth/googleLogin')
+  },
+  computed: {
+    ...mapGetters({
+      userId: 'auth/userId',
+      userName: 'auth/userName',
+    })
+  },
 };
 </script>
 
