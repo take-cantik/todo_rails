@@ -4,9 +4,7 @@
     <Header />
     <div>
       <div>userName : {{ userName }}</div>
-      <router-view
-        :current_user = "userId"
-      />
+      <router-view />
     </div>
   </div>
 </template>

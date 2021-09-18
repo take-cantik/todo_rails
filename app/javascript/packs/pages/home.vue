@@ -10,19 +10,19 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
-  props: ['current_user'],
   data () {
     return {
       columns: {}
     }
   },
-  created() {
+  mounted() {
     axios
-      .get(`api/columns?id=${this.current_user}`)
+      .get(`api/columns?id=${this.userId}`)
       .then(response => (this.columns = response.data))
-  }
+  },
 }
 </script>
 
