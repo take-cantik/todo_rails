@@ -5,7 +5,7 @@ class Api::ColumnsController < ApiController
 	end
 
 	def show
-		@columns = Column.order(:order).where(user_id: params[:id])
+		@columns = Column.where(user_id: params[:id]).order(:order)
 		render json: @colums
 	end
 
