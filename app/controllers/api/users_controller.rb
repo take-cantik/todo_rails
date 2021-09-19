@@ -6,6 +6,7 @@ class Api::UsersController < ApiController
 
   def show
     @user = User.find(params[:id])
-    @count = @user.columns.count
+    logger.debug(@user)
+    render json: @user
   end
 end

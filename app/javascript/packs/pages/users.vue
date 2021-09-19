@@ -5,7 +5,6 @@
       <h2>{{ user.name }}</h2>
     </div>
     <router-link to='/'>ahiahi</router-link>
-    <a href="/">ahi</a>
   </div>
 </template>
 
@@ -20,7 +19,7 @@ export default {
   },
   mounted () {
     axios
-      .get('/api/users.json')
+      .get('/api/users')
       .then(response => (this.users = response.data))
   }
 }

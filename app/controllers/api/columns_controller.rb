@@ -4,6 +4,11 @@ class Api::ColumnsController < ApiController
 		@count = Column.count
 	end
 
+	def show
+		@columns = Column.where(user_id: params[:id]).order(:order)
+		render json: @colums
+	end
+
 	def new
 		@column = Column.new
 		@user_id = params[:id]
